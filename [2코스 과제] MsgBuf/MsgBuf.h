@@ -2,6 +2,8 @@
 
 #include <memory.h>
 #include <cassert>
+#include <stdexcept>
+#include <string>
 
 #define DEFAULT_CAPACITY 128
 
@@ -150,79 +152,365 @@ public:
 	//
 	MsgBuf& operator<<(bool value)
 	{
-		push((char*)&value, sizeof(bool));
+		int pushed = push((char*)&value, sizeof(bool)) != sizeof(bool);
+		if (pushed != sizeof(bool))
+		{
+			std::string errorStr("MsgBuf& operator>>(bool value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(char value)
 	{
-		push((char*)&value, sizeof(char));
+		int pushed = push((char*)&value, sizeof(char));
+		if (pushed != sizeof(char))
+		{
+			std::string errorStr("MsgBuf& operator>>(char value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(unsigned char value)
 	{
-		push((char*)&value, sizeof(unsigned char));
+		int pushed = push((char*)&value, sizeof(unsigned char));
+		if (pushed != sizeof(unsigned char))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned char value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(short value)
 	{
-		push((char*)&value, sizeof(short));
+		int pushed = push((char*)&value, sizeof(short));
+		if (pushed != sizeof(short))
+		{
+			std::string errorStr("MsgBuf& operator>>(short value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(unsigned short value)
 	{
-		push((char*)&value, sizeof(unsigned short));
+		int pushed = push((char*)&value, sizeof(unsigned short));
+		if (pushed != sizeof(unsigned short))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned short value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(int value)
 	{
-		push((char*)&value, sizeof(int));
+		int pushed = push((char*)&value, sizeof(int));
+		if (pushed != sizeof(int))
+		{
+			std::string errorStr("MsgBuf& operator>>(int value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(unsigned int value)
 	{
-		push((char*)&value, sizeof(unsigned int));
+		int pushed = push((char*)&value, sizeof(unsigned int));
+		if (pushed != sizeof(unsigned int))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned int value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(long value)
 	{
-		push((char*)&value, sizeof(long));
+		int pushed = push((char*)&value, sizeof(long));
+		if (pushed != sizeof(long))
+		{
+			std::string errorStr("MsgBuf& operator>>(long value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(unsigned long value)
 	{
-		push((char*)&value, sizeof(unsigned long));
+		int pushed = push((char*)&value, sizeof(unsigned long));
+		if (pushed != sizeof(unsigned long))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned long value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(float value)
 	{
-		push((char*)&value, sizeof(float));
+		int pushed = push((char*)&value, sizeof(float));
+		if (pushed != sizeof(float))
+		{
+			std::string errorStr("MsgBuf& operator>>(float value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(double value)
 	{
-		push((char*)&value, sizeof(double));
+		int pushed = push((char*)&value, sizeof(double));
+		if (pushed != sizeof(double))
+		{
+			std::string errorStr("MsgBuf& operator>>(double value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(__int64 value)
 	{
-		push((char*)&value, sizeof(__int64));
+		int pushed = push((char*)&value, sizeof(__int64));
+		if (pushed != sizeof(__int64))
+		{
+			std::string errorStr("MsgBuf& operator>>(__int64 value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator<<(unsigned __int64 value)
 	{
-		push((char*)&value, sizeof(unsigned __int64));
+		int pushed = push((char*)&value, sizeof(unsigned __int64));
+		if (pushed != sizeof(unsigned __int64))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned __int64 value) -> Error. push return " + std::to_string(pushed)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear)
+				+ "\nvalue: " + std::to_string(value));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
@@ -232,79 +520,352 @@ public:
 	//
 	MsgBuf& operator>>(bool& dest)
 	{
-		pop((char*)&dest, sizeof(bool));
+		int poped = pop((char*)&dest, sizeof(bool));
+		if (poped != sizeof(bool))
+		{
+			std::string errorStr("MsgBuf& operator>>(bool value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(char& dest)
 	{
-		pop((char*)&dest, sizeof(char));
+		int poped = pop((char*)&dest, sizeof(char));
+		if (poped != sizeof(char))
+		{
+			std::string errorStr("MsgBuf& operator>>(char value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(unsigned char& dest)
 	{
-		pop((char*)&dest, sizeof(unsigned char));
+		int poped = pop((char*)&dest, sizeof(unsigned char));
+		if (poped != sizeof(unsigned char))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned char value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(short& dest)
 	{
-		pop((char*)&dest, sizeof(short));
+		int poped = pop((char*)&dest, sizeof(short));
+		if (poped != sizeof(short))
+		{
+			std::string errorStr("MsgBuf& operator>>(short value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(unsigned short& dest)
 	{
-		pop((char*)&dest, sizeof(unsigned short));
+		int poped = pop((char*)&dest, sizeof(unsigned short));
+		if (poped != sizeof(unsigned short))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned short value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(int& dest)
 	{
-		pop((char*)&dest, sizeof(int));
+		int poped = pop((char*)&dest, sizeof(int));
+		if (poped != sizeof(int))
+		{
+			std::string errorStr("MsgBuf& operator>>(int value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(unsigned int& dest)
 	{
-		pop((char*)&dest, sizeof(unsigned int));
+		int poped = pop((char*)&dest, sizeof(unsigned int));
+		if (poped != sizeof(unsigned int))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned int value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(long& dest)
 	{
-		pop((char*)&dest, sizeof(long));
+		int poped = pop((char*)&dest, sizeof(long));
+		if (poped != sizeof(long))
+		{
+			std::string errorStr("MsgBuf& operator>>(long value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(unsigned long& dest)
 	{
-		pop((char*)&dest, sizeof(unsigned long));
+		int poped = pop((char*)&dest, sizeof(unsigned long));
+		if (poped != sizeof(unsigned long))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned long value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(float& dest)
 	{
-		pop((char*)&dest, sizeof(float));
+		int poped = pop((char*)&dest, sizeof(float));
+		if (poped != sizeof(float))
+		{
+			std::string errorStr("MsgBuf& operator>>(float value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(double& dest)
 	{
-		pop((char*)&dest, sizeof(double));
+		int poped = pop((char*)&dest, sizeof(double));
+		if (poped != sizeof(double))
+		{
+			std::string errorStr("MsgBuf& operator>>(double value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(__int64& dest)
 	{
-		pop((char*)&dest, sizeof(__int64));
+		int poped = pop((char*)&dest, sizeof(__int64));
+		if (poped != sizeof(__int64))
+		{
+			std::string errorStr("MsgBuf& operator>>(__int64 value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear));
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 
 	MsgBuf& operator>>(unsigned __int64& dest)
 	{
-		pop((char*)&dest, sizeof(unsigned __int64));
+		int poped = pop((char*)&dest, sizeof(unsigned __int64));
+		if (poped != sizeof(unsigned __int64))
+		{
+			std::string errorStr("MsgBuf& operator>>(unsigned __int64 value) -> Error. pop return " + std::to_string(poped)
+				+ "\ncapacity: " + std::to_string(_capacity)
+				+ "\nsize: " + std::to_string(_size)
+				+ "\nfront: " + std::to_string(front)
+				+ "\nrear: " + std::to_string(rear) + "\n\n");
+
+			errorStr += "\n\nMsgBuf.buffer: \n";
+			for (int i = 1; i <= _capacity; i++)
+			{
+				errorStr += std::to_string(buffer[i]) + " ";
+
+				if (i % 4 == 0 && i != 0)
+				{
+					errorStr += "\n";
+				}
+			}
+
+			throw std::runtime_error(errorStr);
+		}
 		return *this;
 	}
 };
