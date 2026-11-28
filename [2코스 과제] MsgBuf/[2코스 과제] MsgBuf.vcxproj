@@ -139,7 +139,9 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MsgBuf.h" />
+    <ClInclude Include="new_delete\MsgBuf.h" />
+    <ClInclude Include="ObjectFreeList\MsgBuf.h" />
+    <ClInclude Include="ObjectFreeList\ObjectFreeList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
